@@ -136,6 +136,16 @@ public class EgyptianPyramidsApp {
     return command;
   }
 
+  // get integer input
+  private Integer getIntInput(Scanner scan) {
+    String s = scan.nextLine();
+    try {
+      return Integer.parseInt(s);
+    } catch (Exception e){
+        return -1;
+    }
+  }
+
   // print all pharaohs
   private void printAllPharaoh() {
     for (int i = 0; i < pharaohArray.length; i++) {
@@ -154,6 +164,69 @@ public class EgyptianPyramidsApp {
     }
   }
 
+  // find pharaoh by ID
+  private Pharaoh findPharaoh(Integer id) {
+    for (int i = 0; i < pharaohArray.length; i++) {
+        if (pharaohArray[i].id == id)
+            return pharaohArray[i];
+    }
+    return null;
+  }
+
+  // find pyramid by ID
+  private Pyramid findPyramid(Integer id) {
+    for (int i = 0; i < pyramidArray.length; i++) {
+        if (pyramidArray[i].id == id)
+            return pyramidArray[i];
+    }
+    return null;
+  }
+
+  // ask user for pharaoh id, print pharaoh information
+  private Boolean requestPharaoh(Scanner scan) {
+    Integer n;
+    Pharaoh pharaoh;
+
+    System.out.print("Pharaoh ID: ");
+    n = getIntInput(scan);
+    if (n < 0) {
+      System.out.println("ERROR: Invalid ID\n");
+      return false;
+    }
+    pharaoh = findPharaoh(n);
+    if (pharaoh == null) {
+      System.out.println("ERROR: No such pharaoh ID\n");
+      return false;
+    }
+    printMenuLine();
+    pharaoh.print();
+    printMenuLine();
+    return true;
+  }
+
+  // ask user for pyramid id, print pyramid information,
+  private Boolean requestPyramid(Scanner scan) {
+    Integer n;
+    Pyramid pyramid;
+
+    System.out.print("Pyramid ID: ");
+    n = getIntInput(scan);
+    if (n < 0) {
+      System.out.println("ERROR: Invalid ID\n");
+      return false;
+    }
+    pyramid = findPyramid(n);
+    if (pyramid == null) {
+      System.out.println("ERROR: No such pyramid ID\n");
+      return false;
+    }
+    printMenuLine();
+    pyramid.print();
+    printMenuLine();
+    return true;
+  }
+
+  // execute menu command or display error message for unknown command
   private Boolean executeCommand(Scanner scan, Character command) {
     Boolean success = true;
 
@@ -162,11 +235,13 @@ public class EgyptianPyramidsApp {
         printAllPharaoh();
         break;
       case '2':
+        success = requestPharaoh(scan);
         break;
       case '3':
         printAllPyramid();
         break;
       case '4':
+        success = requestPyramid(scan);
         break;
       case '5':
         break;
