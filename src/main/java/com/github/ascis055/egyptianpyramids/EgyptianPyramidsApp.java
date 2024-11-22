@@ -47,7 +47,7 @@ public class EgyptianPyramidsApp {
 
     // create and initialize the pyramid array
     initializePyramid(pyramidJSONArray);
-
+    matchContrib();
   }
 
   // initialize the pharaoh array
@@ -99,6 +99,21 @@ public class EgyptianPyramidsApp {
         pyramidArray[i] = p;
       }
     }
+
+  // match listed contributions with pharaoh records
+  private void matchContrib() {
+    for (int pyr_ind = 0; pyr_ind < pyramidArray.length; pyr_ind++) {
+      for (int n = 0; n < pyramidArray[pyr_ind].contributors.length; n++) {
+        for (int phar_ind = 0; phar_ind < pharaohArray.length; phar_ind++) {
+          if (pharaohArray[phar_ind].hieroglyphic.equals(
+            pyramidArray[pyr_ind].contributors[n])) {
+            pyramidArray[pyr_ind].contributors_ref[n] = pharaohArray[phar_ind];
+            phar_ind = pharaohArray.length;
+          }
+        }
+      }
+    }
+  }
 
   // get a integer from a json object, and parse it
   private Integer toInteger(JSONObject o, String key) {
