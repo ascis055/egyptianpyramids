@@ -145,6 +145,15 @@ public class EgyptianPyramidsApp {
     }
   }
 
+  // print all pyramids
+  private void printAllPyramid() {
+    for (int i = 0; i < pyramidArray.length; i++) {
+      printMenuLine();
+      pyramidArray[i].print();
+      printMenuLine();
+    }
+  }
+
   private Boolean executeCommand(Scanner scan, Character command) {
     Boolean success = true;
 
@@ -155,6 +164,7 @@ public class EgyptianPyramidsApp {
       case '2':
         break;
       case '3':
+        printAllPyramid();
         break;
       case '4':
         break;

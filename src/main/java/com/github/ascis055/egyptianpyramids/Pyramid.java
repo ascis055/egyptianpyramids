@@ -19,4 +19,21 @@ public class Pyramid {
     contributors = pyramidContributors;
     contributors_ref = new Pharaoh[contributors.length];
   }
+
+  // print pyramid info
+  public void print() {
+    int cost = 0;
+    System.out.printf("Pyramid %s\n", name);
+    System.out.printf("\tid: %d\n", id);
+    System.out.printf("\tcontributions:\n");
+    for (int n = 0; n < contributors_ref.length; n++) {
+      if (contributors_ref[n] != null) {
+        cost += contributors_ref[n].contribution;
+        System.out.printf("\t\tPharaoh %s: %d gold coins\n",
+                          contributors_ref[n].name,
+                          contributors_ref[n].contribution);
+      }
+    }
+    System.out.printf("\tCost: %d gold coins\n", cost);
+  }
 }
