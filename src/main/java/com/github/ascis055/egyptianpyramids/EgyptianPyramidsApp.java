@@ -68,7 +68,7 @@ public class EgyptianPyramidsApp {
       Integer contribution = toInteger(o, "contribution");
       String hieroglyphic = o.get("hieroglyphic").toString();
 
-      // add a new pharoah to array
+      // add a new pharaoh to array
       Pharaoh p = new Pharaoh(id, name, begin, end, contribution, hieroglyphic);
       pharaohArray[i] = p;
     }
@@ -137,6 +137,14 @@ public class EgyptianPyramidsApp {
       case '1':
         printAllPharaoh();
         break;
+      case '2':
+        break;
+      case '3':
+        break;
+      case '4':
+        break;
+      case '5':
+        break;
       case 'q':
         System.out.println("Thank you for using Nassef's Egyptian Pyramid App!");
         break;
@@ -165,7 +173,11 @@ public class EgyptianPyramidsApp {
     printMenuLine();
     System.out.printf("Command\t\tDescription\n");
     System.out.printf("-------\t\t---------------------------------------\n");
-    printMenuCommand('1', "List all the pharoahs");
+    printMenuCommand('1', "List all the pharaohs");
+    printMenuCommand('2', "Display a specific pharaoh");
+    printMenuCommand('3', "List all the pyramids");
+    printMenuCommand('4', "Display a specific pyramid");
+    printMenuCommand('5', "Display a list of requested pyramids");
     printMenuCommand('q', "Quit");
     printMenuLine();
   }
