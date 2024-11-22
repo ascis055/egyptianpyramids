@@ -164,6 +164,18 @@ public class EgyptianPyramidsApp {
     }
   }
 
+  // list all pyramids marked as requested
+  private void listRequestedPyramids() {
+    System.out.printf("Id\tName\n--\t----\n");
+    for (int i = 0; i < pyramidArray.length; i++) {
+      if (pyramidArray[i].requested) {
+        System.out.printf("%d\t%s\n",
+                          pyramidArray[i].id,
+                          pyramidArray[i].name);
+      }
+    }
+  }
+
   // find pharaoh by ID
   private Pharaoh findPharaoh(Integer id) {
     for (int i = 0; i < pharaohArray.length; i++) {
@@ -205,6 +217,7 @@ public class EgyptianPyramidsApp {
   }
 
   // ask user for pyramid id, print pyramid information,
+  // mark pyramid as requested
   private Boolean requestPyramid(Scanner scan) {
     Integer n;
     Pyramid pyramid;
@@ -223,6 +236,7 @@ public class EgyptianPyramidsApp {
     printMenuLine();
     pyramid.print();
     printMenuLine();
+    pyramid.requested = true;
     return true;
   }
 
@@ -244,6 +258,7 @@ public class EgyptianPyramidsApp {
         success = requestPyramid(scan);
         break;
       case '5':
+        listRequestedPyramids();
         break;
       case 'q':
         System.out.println("Thank you for using Nassef's Egyptian Pyramid App!");

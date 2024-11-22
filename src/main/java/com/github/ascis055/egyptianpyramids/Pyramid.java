@@ -7,6 +7,7 @@ public class Pyramid {
   protected String name;
   protected String[] contributors;
   protected Pharaoh[] contributors_ref;
+  protected Boolean requested;
 
   // constructor
   public Pyramid(
@@ -18,6 +19,7 @@ public class Pyramid {
     name = pyramidName;
     contributors = pyramidContributors;
     contributors_ref = new Pharaoh[contributors.length];
+    requested = false;
   }
 
   // print pyramid info
